@@ -12,10 +12,9 @@ export function ChatContainer() {
   return (
     <div className="mt-2 py-4 flex flex-col overflow-y-auto h-96">
       {messages.map((messageItem) => {
-        const {message, id, pilotid, sent} = messageItem;
-        // TODO: Add Read confirmation
+        const {message, id, pilotid, sent, read} = messageItem;
         if (`${sender}` === `${pilotid}`) {
-          return <OutgoingMessageBubble key={id} message={message} sendTimestamp={sent} isRead/>;
+          return <OutgoingMessageBubble key={id} message={message} sendTimestamp={sent} isRead={!!read}/>;
         } else {
           if (!participants[pilotid]) return null;
           return <IncomingMessageBubble key={id} messageData={messageItem} userData={participants[pilotid]} />;
