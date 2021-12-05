@@ -1,15 +1,19 @@
 //import { VscTriangleRight } from 'react-icons/vsc';
 import { BsCheck2All } from 'react-icons/bs';
+import { formatSendHour } from '../../utility/time';
 
 export function OutgoingMessageBubble(props) {
+  const rawDate = new Date(Date.parse(props.sendTimestamp));
+  const {hour} = formatSendHour(rawDate);
+
   return (
-    <div className="bg-blue-900 w-3/5 p-2 rounded-md self-end text-white flex flex-col">
-      <span className="">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Except adipiscing 
+    <div className="bg-blue-900 w-3/5 p-2 my-2 rounded-md self-end text-white flex flex-col">
+      <span className="w-full break-words">
+        {props.message}
       </span>
 
       <div className="flex items-center mt-1 self-end">
-        <span className="text-sm font-light mr-1 text-gray-100">11:35 AM</span>
+        <span className="text-sm font-light mr-1 text-gray-100">{hour}</span>
         {/* COLOR States: Green -> text-green-400 Gray: text-gray-300 */}
         <BsCheck2All className="text-green-400 text-xl"/>
       </div>
