@@ -1,5 +1,6 @@
 import { ChatContainer } from "./components/ChatContainer";
 import { ChatHeader } from "./components/ChatHeader";
+import { InputMessageBox } from "./components/InputMessageBox";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
     ">
       <ChatHeader />
       <ChatContainer />
+      <InputMessageBox />
     </div>
   );
 }
