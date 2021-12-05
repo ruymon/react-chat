@@ -1,5 +1,5 @@
 export function HomePage() {
   return (
-    <h1>Missing Page token...</h1>
+    <h1>Token inválido...</h1>
   );
 }
