@@ -1,3 +1,4 @@
+import { ChatContainer } from "./components/ChatContainer";
 import { ChatHeader } from "./components/ChatHeader";
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
       rounded-lg
     ">
       <ChatHeader />
+      <ChatContainer />
     </div>
   );
 }
