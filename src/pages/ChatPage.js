@@ -1,8 +1,8 @@
 
 import { useSetRecoilState } from 'recoil';
-import { messagesState, participantsState } from '../atoms';
+import { chatRoomInfoState, messagesState, participantsState } from '../atoms';
 import { useParams, useNavigate } from "react-router-dom";
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import axios from 'axios';
 
 import { ChatHeader } from "../components/ChatHeader";
@@ -13,17 +13,19 @@ export function ChatPage() {
   const params = useParams();
   const navigate = useNavigate();
 
-  const [chatData, setChatData] = useState({});
   const setMessages = useSetRecoilState(messagesState);
   const setParticipants = useSetRecoilState(participantsState);
+  const setChatRoomInfo = useSetRecoilState(chatRoomInfoState);
 
   useEffect(() => {
     async function getChatData() {
       try {
         const response = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/getMessages?token=${params.token}`);
-        setChatData(response.data);
+        const roomInfo = [response.data.flight.code, response.data.flight.number, response.data.pilotId];
+
         setMessages(response.data.messages);
         setParticipants(response.data.participants);
+        setChatRoomInfo(roomInfo);
       } catch (error) {
         navigate('/');
       };
@@ -36,7 +38,7 @@ export function ChatPage() {
     getChatData();
 
     return () => clearInterval(interval);
-  }, [params.token, setMessages, setParticipants, navigate]);
+  }, [params.token, setMessages, setParticipants, navigate, setChatRoomInfo]);
 
   return (
     <div className="md:w-2/5 2xl:w-3/12 border-gray-200 border-2 px-2 py-4 rounded-lg">

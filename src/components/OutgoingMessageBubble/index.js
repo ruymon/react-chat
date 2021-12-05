@@ -7,7 +7,7 @@ export function OutgoingMessageBubble(props) {
   const {hour} = formatSendHour(rawDate);
 
   return (
-    <div className="bg-blue-900 w-3/5 p-2 my-2 rounded-md self-end text-white flex flex-col">
+    <div className="bg-blue-900 w-3/5 p-2 mr-2 my-2 rounded-md self-end text-white flex flex-col">
       <span className="w-full break-words">
         {props.message}
       </span>

@@ -7,5 +7,10 @@ export const messagesState = atom({
 
 export const participantsState = atom({
   key: 'participantsState',
+  default: {},
+});
+
+export const chatRoomInfoState = atom({
+  key: 'chatRoomInfoState',
   default: [],
 });
