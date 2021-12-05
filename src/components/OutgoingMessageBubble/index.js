@@ -15,7 +15,7 @@ export function OutgoingMessageBubble(props) {
       <div className="flex items-center mt-1 self-end">
         <span className="text-sm font-light mr-1 text-gray-100">{hour}</span>
         {/* COLOR States: Green -> text-green-400 Gray: text-gray-300 */}
-        <BsCheck2All className="text-green-400 text-xl"/>
+        <BsCheck2All className={props.isRead ? 'text-green-400' : 'text-gray-300'}/>
       </div>
 
     </div>
