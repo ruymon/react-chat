@@ -11,15 +11,14 @@ export function ChatContainer() {
   const sender = chatRoomInfo[2];
   return (
     <div className="mt-2 py-4 flex flex-col overflow-y-auto h-96">
-      {messages.map(({message, id, pilotid, sent, read}) => {
+      {messages.map((messageItem) => {
+        const {message, id, pilotid, sent} = messageItem;
+        // TODO: Add Read confirmation
         if (`${sender}` === `${pilotid}`) {
-          console.log(message.read);
-          // TODO: Set isRead
           return <OutgoingMessageBubble key={id} message={message} sendTimestamp={sent} isRead/>;
         } else {
           if (!participants[pilotid]) return null;
-          const {avatar, firstName, lastName} = participants[pilotid];
-          return <IncomingMessageBubble key={id} message={message} sendTimestamp={sent} avatarUrl={avatar} sentBy={`${firstName} ${lastName}`}/>;
+          return <IncomingMessageBubble key={id} messageData={messageItem} userData={participants[pilotid]} />;
         }
       })}
     </div>
