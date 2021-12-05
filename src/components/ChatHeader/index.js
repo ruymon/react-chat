@@ -1,13 +1,17 @@
 import { FiX } from 'react-icons/fi';
 import { Avatar } from '../Avatar';
 
+import { useRecoilValue } from 'recoil';
+import { participantsState } from '../../atoms';
+
 export function ChatHeader() {
+  const participants = useRecoilValue(participantsState);
+
   return (
     <div className="flex justify-between items-center px-2">
       {/* Chat Members */}
       <div className="flex -space-x-2 overflow-hidden">
-        <Avatar avatarUrl="https://flyazulv.com/imagecrop/croppedavatar.php?piloco=AZU2234&firstname=K&lastname=F"/>
-        <Avatar avatarUrl="https://github.com/ruymon.png"/>
+        {participants.map(({avatar, pilotId}) => (<Avatar key={pilotId} avatarUrl={avatar}/>))}
       </div>
 
       <div className="flex flex-col justify-between items-center">

@@ -1,22 +1,18 @@
-import { ChatContainer } from "./components/ChatContainer";
-import { ChatHeader } from "./components/ChatHeader";
-import { InputMessageBox } from "./components/InputMessageBox";
+import { RecoilRoot } from 'recoil';
+import { Routes, Route } from "react-router-dom";
+
+import { ChatPage } from "./pages/ChatPage";
+import { HomePage } from "./pages/HomePage";
+
 
 function App() {
   return (
-    <div className="
-      md:w-2/5 
-      2xl:w-3/12
-      border-gray-200
-      border-2
-      px-2 
-      py-4 
-      rounded-lg
-    ">
-      <ChatHeader />
-      <ChatContainer />
-      <InputMessageBox />
-    </div>
+  <RecoilRoot>
+    <Routes>
+      <Route path="/" element={<HomePage />} />
+      <Route path="/:token" element={<ChatPage />} />
+    </Routes>
+  </RecoilRoot>
   );
 }
 

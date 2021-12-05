@@ -1,20 +1,23 @@
+import axios from 'axios';
+
 import { useState } from 'react';
+import { useParams } from 'react-router';
 
 import { HiOutlinePaperAirplane } from 'react-icons/hi';
 import { BsPaperclip } from 'react-icons/bs';
-import axios from 'axios';
 
 export function InputMessageBox() {
+  const params = useParams();
   const [message, setMessage] = useState('');
   const [attachment, setAttachment] = useState(null);
 
   const apiBaseUrl = process.env.REACT_APP_API_BASE_URL;
-  const apiKey = process.env.REACT_APP_API_KEY;
+  const token = params.token;
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const data = new FormData();
-    data.append('token', apiKey);
+    data.append('token', token);
     data.append('message', message);
     data.append('attachment', attachment);
     
@@ -22,6 +25,9 @@ export function InputMessageBox() {
       .then(res => console.log(res.data));
   };
 
+  // TODO: Show file uploaded
+  // TODO: Disable button submit if message is empty
+  // TODO: If response is success, clear message and attachment
 
   return (
     <form onSubmit={handleSubmit} encType="multipart/form-data" className="w-full bg-gray-100 flex justify-between rounded" >
