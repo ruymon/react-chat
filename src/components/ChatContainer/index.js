@@ -17,7 +17,7 @@ export function ChatContainer() {
           return <OutgoingMessageBubble key={id} message={message} sendTimestamp={sent} isRead={!!read} attachment={attachment} attachmentType={attachment_type}/>;
         } else {
           if (!participants[pilotid]) return null;
-          return <IncomingMessageBubble key={id} messageData={messageItem} userData={participants[pilotid]} />;
+          return <IncomingMessageBubble key={id} messageData={messageItem} userData={participants[pilotid]} attachment={attachment} attachmentType={attachment_type}/>;
         }
       })}
     </div>

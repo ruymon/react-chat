@@ -24,7 +24,7 @@ export function ChatHeader() {
 
       <div className="flex flex-col justify-between items-center">
         <h1 className="font-bold text-lg text-blue-900">{`${chatRoomInfo[0]}${chatRoomInfo[1]}`}</h1>
-        <span className="font-normal text-sm text-gray-500">Última mensagem à 45 minutos</span>
+        <span className="font-normal text-sm text-gray-500">Chat AzulV - <span className="font-mono">BETA 0.1</span></span>
       </div>
 
       <FiX className="text-gray-700 hover:text-red-600 text-xl" />

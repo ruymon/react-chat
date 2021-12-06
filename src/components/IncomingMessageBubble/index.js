@@ -1,9 +1,10 @@
 import { formatSendHour } from "../../utility/time";
 import { Avatar } from "../Avatar";
+import { IncomingAttachment } from "../IncomingAttachment";
 
-export function IncomingMessageBubble({messageData, userData}) {
+export function IncomingMessageBubble({messageData, userData, ...props}) {
   const rawDate = new Date(Date.parse(messageData.sent));
-  const {hour} = formatSendHour(rawDate);
+  const {zuluTime} = formatSendHour(rawDate);
 
   const {avatar, firstName, lastName} = userData;
   return ( 
@@ -13,10 +14,12 @@ export function IncomingMessageBubble({messageData, userData}) {
         <span className="mb-1 font-bold text-gray-800">{`${firstName} ${lastName}`}</span>
         <span className="w-full break-words">
           {messageData.message}
+
+          {props.attachment && <IncomingAttachment fileType={props.attachmentType} fileUrl={props.attachment} />}
         </span>
 
         <div className="flex items-center mt-1 self-end">
-          <span className="text-sm font-light mr-1 text-gray-700">{hour}</span>
+          <span className="text-sm font-light mr-1 text-gray-700">{zuluTime}</span>
         </div>
       </div>
     </div>

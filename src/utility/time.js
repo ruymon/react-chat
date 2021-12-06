@@ -1,7 +1,7 @@
 export function formatSendHour(rawDate) {
   const formatOptions = {
     hour: 'numeric',
-    hour12: true,
+    hour12: false,
     year: 'numeric',
     month: 'numeric',
     day: 'numeric',
@@ -10,8 +10,11 @@ export function formatSendHour(rawDate) {
   };
   
   const parsedDate = new Intl.DateTimeFormat('pt-BR', formatOptions).format(rawDate);
-  const hour = parsedDate.split(' ')[1] + ' ' + parsedDate.split(' ')[2];
+  const time = parsedDate.split(' ')[1];
+  const hour = time.split(':')[0];
+  const minute = time.split(':')[1];
+  const zuluTime = `${hour}${minute}z`;
   const date = parsedDate.split(' ')[0];
 
-  return {date, hour};
+  return {date, zuluTime};
 };
