@@ -5,11 +5,14 @@ import { useParams } from 'react-router';
 
 import { HiOutlinePaperAirplane } from 'react-icons/hi';
 import { BsPaperclip } from 'react-icons/bs';
+import { RiLoader5Line } from 'react-icons/ri';	
 
 export function InputMessageBox() {
   const params = useParams();
   const [message, setMessage] = useState('');
   const [attachment, setAttachment] = useState(null);
+
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const apiBaseUrl = process.env.REACT_APP_API_BASE_URL;
   const token = params.token;
@@ -25,13 +28,14 @@ export function InputMessageBox() {
       alert('No message or attachment to send');
       return;
     };
+    setIsSubmitting(true);
     const data = new FormData();
     data.append('token', token);
     data.append('message', message);
     data.append('attachment', attachment);
     
     axios.post(`${apiBaseUrl}/sendMessage`, data)
-      .then(res => console.log(res.data));
+      .then(res => setIsSubmitting(false));
     
     clearInput();
   };
@@ -51,8 +55,12 @@ export function InputMessageBox() {
 
         <input id="file-input" type="file" onChange={(event) => setAttachment(event.target.files[0])} className="hidden"/>          
 
-        <button type="submit" disabled={isButtonDisabled}>
-          <HiOutlinePaperAirplane className={`transform rotate-45 text-xl font-bold text-gray-600 ${isButtonDisabled ? 'disabled:opacity-50 cursor-not-allowed' : 'hover:text-green-500 transition duration-200 hover:scale-110'}`}/>
+        <button type="submit" disabled={isButtonDisabled && isSubmitting} >
+          { isSubmitting ?
+            <RiLoader5Line className={`text-blue-900 font-bold text-xl animate-spin disabled:opacity-50 cursor-not-allowed`} />
+            :
+            <HiOutlinePaperAirplane className={`transform rotate-45 text-xl font-bold text-gray-600 ${isButtonDisabled ? 'disabled:opacity-50 cursor-not-allowed' : 'hover:text-green-500 transition duration-200 hover:scale-110'}`}/>
+          }
         </button>
       </div>
     </form>
