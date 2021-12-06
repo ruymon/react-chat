@@ -13,7 +13,7 @@ export function IncomingAttachment(props) {
       <AttachmentIcon fileType={props.fileType}/>
       <div className="flex flex-col items-start justify-center">
         <h1 className="font-bold text-lg">Anexo</h1>
-        <span className="font-mono text-sm text-blue-900">{props.fileType}</span>
+        <span className="text-sm text-blue-900">Arquivo <span className="font-mono">{props.fileType}</span></span>
       </div>
 
       <a href={`${baseDonwloadUrl}${props.fileUrl}`} className="flex border-2 border-green-500 text-green-500 p-2 hover:text-white rounded-md bg-transparent hover:bg-green-500 transition focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50">
