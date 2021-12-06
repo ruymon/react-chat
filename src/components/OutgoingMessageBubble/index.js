@@ -12,7 +12,7 @@ export function OutgoingMessageBubble(props) {
       <span className="w-full break-words">
         {props.message}
 
-        {props.attachment && <OutgoingAttachment fileName={props.attachmentType} fileUrl={props.attachment} />}
+        {props.attachment && <OutgoingAttachment fileType={props.attachmentType} fileUrl={props.attachment} />}
       </span>
 
       <div className="flex items-center mt-1 self-end">

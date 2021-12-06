@@ -1,6 +1,5 @@
 import { useRecoilValue } from "recoil";
 import { chatRoomInfoState, messagesState, participantsState } from "../../atoms";
-import { OutgoingAttachment } from "../OutgoingAttachment";
 import { IncomingMessageBubble } from "../IncomingMessageBubble";
 import { OutgoingMessageBubble } from "../OutgoingMessageBubble";
 
