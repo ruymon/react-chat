@@ -21,6 +21,10 @@ export function InputMessageBox() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (message.trim() === '' && !attachment) {
+      alert('No message or attachment to send');
+      return;
+    };
     const data = new FormData();
     data.append('token', token);
     data.append('message', message);
@@ -32,9 +36,9 @@ export function InputMessageBox() {
     clearInput();
   };
 
-  // TODO: Show file uploaded
   // TODO: Disable button submit if message is empty
 
+  console.log(attachment);
   return (
     <form onSubmit={handleSubmit} encType="multipart/form-data" className="w-full bg-gray-100 flex justify-between rounded" >
       <div className="w-full">
@@ -43,7 +47,7 @@ export function InputMessageBox() {
 
       <div className="flex items-center gap-2 px-4">
         <label htmlFor="file-input">
-          <BsPaperclip className="text-xl text-gray-600 hover:text-blue-900 transition duration-200 transform hover:scale-110" />
+          <BsPaperclip className={`text-xl hover:text-blue-900 transition duration-200 transform hover:scale-110 ${attachment ? 'text-green-500' : ' text-gray-600'}`} />
         </label>
 
         <input id="file-input" type="file" onChange={(event) => setAttachment(event.target.files[0])} className="hidden"/>          
