@@ -21,7 +21,7 @@ export function ChatPage() {
     async function getChatData() {
       try {
         const response = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/getMessages?token=${params.token}`);
-        const roomInfo = [response.data.flight.code, response.data.flight.number, response.data.pilotId];
+        const roomInfo = [response.data.flight.code, response.data.flight.number, response.data.pilotId, response.data.downloadEndpoint];
 
         setMessages(response.data.messages);
         setParticipants(response.data.participants);

@@ -23,7 +23,7 @@ export function ChatHeader() {
       </div>
 
       <div className="flex flex-col justify-between items-center">
-        <h1 className="font-bold text-lg text-blue-900">{chatRoomInfo}</h1>
+        <h1 className="font-bold text-lg text-blue-900">{`${chatRoomInfo[0]}${chatRoomInfo[1]}`}</h1>
         <span className="font-normal text-sm text-gray-500">Última mensagem à 45 minutos</span>
       </div>
 

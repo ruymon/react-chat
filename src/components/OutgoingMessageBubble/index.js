@@ -1,6 +1,7 @@
 //import { VscTriangleRight } from 'react-icons/vsc';
 import { BsCheck2All } from 'react-icons/bs';
 import { formatSendHour } from '../../utility/time';
+import { OutgoingAttachment } from '../OutgoingAttachment';
 
 export function OutgoingMessageBubble(props) {
   const rawDate = new Date(Date.parse(props.sendTimestamp));
@@ -10,6 +11,8 @@ export function OutgoingMessageBubble(props) {
     <div className="bg-blue-900 w-3/5 p-2 mr-2 my-2 rounded-md self-end text-white flex flex-col">
       <span className="w-full break-words">
         {props.message}
+
+        {props.attachment && <OutgoingAttachment fileName={props.attachmentType} fileUrl={props.attachment} />}
       </span>
 
       <div className="flex items-center mt-1 self-end">
