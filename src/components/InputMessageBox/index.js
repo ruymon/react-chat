@@ -14,6 +14,11 @@ export function InputMessageBox() {
   const apiBaseUrl = process.env.REACT_APP_API_BASE_URL;
   const token = params.token;
 
+  const clearInput = () => {
+    setMessage('');
+    setAttachment(null);
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const data = new FormData();
@@ -23,16 +28,17 @@ export function InputMessageBox() {
     
     axios.post(`${apiBaseUrl}/sendMessage`, data)
       .then(res => console.log(res.data));
+    
+    clearInput();
   };
 
   // TODO: Show file uploaded
   // TODO: Disable button submit if message is empty
-  // TODO: If response is success, clear message and attachment
 
   return (
     <form onSubmit={handleSubmit} encType="multipart/form-data" className="w-full bg-gray-100 flex justify-between rounded" >
       <div className="w-full">
-        <input type="text" className="w-full h-12 px-4 rounded bg-transparent outline-none text-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-900 focus:border-transparent" onChange={(event) => setMessage(event.target.value)} placeholder="Mensagem" />
+        <input type="text" className="w-full h-12 px-4 rounded bg-transparent outline-none text-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-900 focus:border-transparent" onChange={(event) => setMessage(event.target.value)} value={message} placeholder="Mensagem" />
       </div>
 
       <div className="flex items-center gap-2 px-4">
