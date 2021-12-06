@@ -36,9 +36,8 @@ export function InputMessageBox() {
     clearInput();
   };
 
-  // TODO: Disable button submit if message is empty
+  const isButtonDisabled = message.trim() === '' && !attachment;
 
-  console.log(attachment);
   return (
     <form onSubmit={handleSubmit} encType="multipart/form-data" className="w-full bg-gray-100 flex justify-between rounded" >
       <div className="w-full">
@@ -52,8 +51,8 @@ export function InputMessageBox() {
 
         <input id="file-input" type="file" onChange={(event) => setAttachment(event.target.files[0])} className="hidden"/>          
 
-        <button type="submit" >
-          <HiOutlinePaperAirplane className="transform rotate-45 text-xl font-bold text-gray-600 hover:text-green-500 transition duration-200 hover:scale-110"/>
+        <button type="submit" disabled={isButtonDisabled}>
+          <HiOutlinePaperAirplane className={`transform rotate-45 text-xl font-bold text-gray-600 ${isButtonDisabled ? 'disabled:opacity-50 cursor-not-allowed' : 'hover:text-green-500 transition duration-200 hover:scale-110'}`}/>
         </button>
       </div>
     </form>
