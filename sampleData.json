@@ -1,0 +1,127 @@
+{
+  "chatId": 1,
+  "token": 123456789,
+  "pilotId": 14,
+  "downloadEndpoint": "https:\/\/api.flyazulv.com\/api\/api\/downloadFile\/chatAttachments\/",
+  "flight": {
+    "code": "ACN",
+    "number": "5550",
+    "from": {
+      "icao": "SNMA",
+      "iata": "TEM",
+      "name": "MONTE ALEGRE",
+      "latitude": -1.99667,
+      "longitude": -54.0714,
+      "elevation": "325"
+    },
+    "to": {
+      "icao": "SNTI",
+      "iata": "OBI",
+      "name": "Ã“BIDOS",
+      "latitude": -1.86806,
+      "longitude": -55.5144,
+      "elevation": "328"
+    }
+  },
+  "aircraft": {
+    "registration": "PR-MAU",
+    "icao": "C208",
+    "model": "Caravan 208B",
+    "engine": "PT6A-114A",
+    "image": "https:\/\/cdn.jetphotos.com\/full\/6\/51818_1626451622.jpg",
+    "selcal": "",
+    "hexcode": null,
+    "maxpax": 9,
+    "baptName": null
+  },
+  "participants": [
+    {
+      "pilotId": 14,
+      "pilotCode": "AZU2234",
+      "firstName": "Kewyn",
+      "lastName": "Ferreira",
+      "avatar": "https:\/\/flyazulv.com\/imagecrop\/croppedavatar.php?piloco=AZU2234&firstname=K&lastname=F"
+    },
+    {
+      "pilotId": 3,
+      "pilotCode": "AZU2223",
+      "firstName": "Porphirio ",
+      "lastName": "Souza",
+      "avatar": "https:\/\/flyazulv.com\/imagecrop\/croppedavatar.php?piloco=AZU2223&firstname=P&lastname=S"
+    }
+  ],
+  "messages": [
+    {
+      "id": 1,
+      "chat": 1,
+      "pilotid": 14,
+      "message": "Olá, comandante!",
+      "attachment": null,
+      "sent": "2021-12-04 23:05:22",
+      "read": null,
+      "deleted": 0,
+      "updated_at": "2021-12-05T03:53:02.000000Z",
+      "created_at": null
+    },
+    {
+      "id": 2,
+      "chat": 1,
+      "pilotid": 2,
+      "message": "Olá, DOV! Favor adicionar 1200kg de combustível devido meteorologia.",
+      "attachment": null,
+      "sent": "2021-12-04 21:41:30",
+      "read": "2021-12-05 04:54:27",
+      "deleted": null,
+      "updated_at": "2021-12-05T04:54:27.000000Z",
+      "created_at": null
+    },
+    {
+      "id": 3,
+      "chat": 1,
+      "pilotid": 14,
+      "message": "Hello, world!",
+      "attachment": null,
+      "sent": "2021-12-04 23:13:25",
+      "read": null,
+      "deleted": null,
+      "updated_at": "2021-12-05T04:13:13.000000Z",
+      "created_at": "2021-12-05T04:13:13.000000Z"
+    },
+    {
+      "id": 4,
+      "chat": 1,
+      "pilotid": 3,
+      "message": "Hello, world!",
+      "attachment": null,
+      "sent": "2021-12-04 23:14:28",
+      "read": "2021-12-05 04:54:27",
+      "deleted": null,
+      "updated_at": "2021-12-05T04:54:27.000000Z",
+      "created_at": "2021-12-05T04:14:16.000000Z"
+    },
+    {
+      "id": 5,
+      "chat": 1,
+      "pilotid": 3,
+      "message": "Hello, world!",
+      "attachment": "",
+      "sent": "2021-12-04 23:41:41",
+      "read": "2021-12-05 04:54:27",
+      "deleted": null,
+      "updated_at": "2021-12-05T04:54:27.000000Z",
+      "created_at": "2021-12-05T04:41:30.000000Z"
+    },
+    {
+      "id": 6,
+      "chat": 1,
+      "pilotid": 3,
+      "message": "Hello, world!",
+      "attachment": "chatAttachments\/mEJ3869t9BsvDJfyyKx1GjZGshqSxEttf3EwHuv2.pdf",
+      "sent": "2021-12-04 23:43:04",
+      "read": "2021-12-05 04:54:27",
+      "deleted": null,
+      "updated_at": "2021-12-05T04:54:27.000000Z",
+      "created_at": "2021-12-05T04:42:52.000000Z"
+    }
+  ]
+}
