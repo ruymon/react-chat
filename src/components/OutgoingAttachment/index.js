@@ -8,8 +8,6 @@ export function OutgoingAttachment(props) {
   const chatRoomInfo = useRecoilValue(chatRoomInfoState);
   const baseDonwloadUrl = chatRoomInfo[3];
 
-  console.log(baseDonwloadUrl);
-
   return (
     <div className="bg-blue-900 w-full p-1 my-2 mt-4 rounded-md self-end text-white flex items-center justify-between border-2 border-white">
       <AttachmentIcon fileType={props.fileType}/>
