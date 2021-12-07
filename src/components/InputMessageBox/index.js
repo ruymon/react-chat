@@ -6,6 +6,8 @@ import { useParams } from 'react-router';
 import { HiOutlinePaperAirplane } from 'react-icons/hi';
 import { BsPaperclip } from 'react-icons/bs';
 import { RiLoader5Line } from 'react-icons/ri';	
+import { useSetRecoilState } from 'recoil';
+import { messagesState } from '../../atoms';
 
 export function InputMessageBox() {
   const params = useParams();
@@ -22,6 +24,8 @@ export function InputMessageBox() {
     setAttachment(null);
   };
 
+  const setMessages = useSetRecoilState(messagesState);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (message.trim() === '' && !attachment) {
@@ -35,8 +39,9 @@ export function InputMessageBox() {
     data.append('attachment', attachment);
     
     axios.post(`${apiBaseUrl}/sendMessage`, data)
-      .then(res => setIsSubmitting(false));
-    
+      .then(res => setMessages(res.data.messages))
+      .then(() => setIsSubmitting(false));
+
     clearInput();
   };
 
