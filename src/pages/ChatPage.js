@@ -33,7 +33,7 @@ export function ChatPage() {
 
     const interval = setInterval(() => {
       getChatData();
-    }, 2 * 1000);
+    }, 10 * 1000);
 
     getChatData();
 

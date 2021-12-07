@@ -6,6 +6,8 @@ import { useParams } from 'react-router';
 import { HiOutlinePaperAirplane } from 'react-icons/hi';
 import { BsPaperclip } from 'react-icons/bs';
 import { RiLoader5Line } from 'react-icons/ri';	
+import { useSetRecoilState } from 'recoil';
+import { messagesState } from '../../atoms';
 
 export function InputMessageBox() {
   const params = useParams();
@@ -22,21 +24,31 @@ export function InputMessageBox() {
     setAttachment(null);
   };
 
-  const handleSubmit = (e) => {
+  const setMessages = useSetRecoilState(messagesState);
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    
     if (message.trim() === '' && !attachment) {
       alert('No message or attachment to send');
       return;
     };
+
     setIsSubmitting(true);
-    const data = new FormData();
-    data.append('token', token);
-    data.append('message', message);
-    data.append('attachment', attachment);
-    
-    axios.post(`${apiBaseUrl}/sendMessage`, data)
-      .then(res => setIsSubmitting(false));
-    
+    const postData = new FormData();
+    postData.append('token', token);
+    postData.append('message', message);
+    postData.append('attachment', attachment);
+
+    try {
+      const { data } = await axios.post(`${apiBaseUrl}/sendMessage`, postData);
+      setMessages(data.messages);
+      setIsSubmitting(false);
+    } catch (err) {
+      console.log(err);
+      setIsSubmitting(false);
+    }
+
     clearInput();
   };
 
