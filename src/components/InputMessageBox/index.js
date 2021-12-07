@@ -61,8 +61,8 @@ export function InputMessageBox() {
       </div>
 
       <div className="flex items-center gap-2 px-4">
-        <label htmlFor="file-input">
-          <BsPaperclip className={`text-xl hover:text-blue-900 transition duration-200 transform hover:scale-110 ${attachment ? 'text-green-500' : ' text-gray-600'}`} />
+        <label htmlFor="file-input" className={`${attachment ? 'bg-yellow-200 p-2 rounded-md' : ''}`}>
+          <BsPaperclip className={`text-xl transition duration-200 transform hover:scale-110 ${attachment ? 'text-yellow-500 hover:text-yellow-500' : ' text-gray-600 hover:text-blue-900'}`} />
         </label>
 
         <input id="file-input" type="file" onChange={(event) => setAttachment(event.target.files[0])} className="hidden"/>          
