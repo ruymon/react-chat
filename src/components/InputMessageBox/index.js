@@ -26,21 +26,28 @@ export function InputMessageBox() {
 
   const setMessages = useSetRecoilState(messagesState);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    
     if (message.trim() === '' && !attachment) {
       alert('No message or attachment to send');
       return;
     };
+
     setIsSubmitting(true);
-    const data = new FormData();
-    data.append('token', token);
-    data.append('message', message);
-    data.append('attachment', attachment);
-    
-    axios.post(`${apiBaseUrl}/sendMessage`, data)
-      .then(res => setMessages(res.data.messages))
-      .then(() => setIsSubmitting(false));
+    const postData = new FormData();
+    postData.append('token', token);
+    postData.append('message', message);
+    postData.append('attachment', attachment);
+
+    try {
+      const { data } = await axios.post(`${apiBaseUrl}/sendMessage`, postData);
+      setMessages(data.messages);
+      setIsSubmitting(false);
+    } catch (err) {
+      console.log(err);
+      setIsSubmitting(false);
+    }
 
     clearInput();
   };
