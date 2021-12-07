@@ -25,7 +25,7 @@ export function ChatHeader() {
       <div className="flex flex-col justify-between items-center">
         <h1 className="font-bold text-lg text-blue-900">{`${chatRoomInfo[0]}${chatRoomInfo[1]}`}</h1>
         <div className="flex flex-col">
-          <span className="font-normal text-sm text-gray-500">Chat AzulV - <span className="font-mono">BETA 0.1</span></span>
+          <span className="font-normal text-sm text-gray-500">Chat - <span className="font-mono">BETA 0.1</span></span>
           <span className="text-sm text-gray-400">Powered by <a target="_blank" rel="noreferrer" className="font-semibold text-blue-900 hover:text-blue-800 opacity-90" href="https://www.github.com/ruymon">@ruymon</a></span>
         </div>
 
